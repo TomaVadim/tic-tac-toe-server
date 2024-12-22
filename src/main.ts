@@ -8,7 +8,7 @@ import { TelegramAuthGuard } from './guards/telegram-auth.guard';
 
 async function bootstrap(): Promise<void> {
   const PORT = process.env.PORT || 8080;
-  // const ORIGIN = process.env.CORS_ORIGIN;
+  const ORIGIN = process.env.CORS_ORIGIN;
 
   const app = await NestFactory.create(AppModule);
 
@@ -24,7 +24,7 @@ async function bootstrap(): Promise<void> {
 
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  app.enableCors({ origin: '*' });
+  app.enableCors({ origin: ORIGIN });
 
   app.useGlobalGuards(new TelegramAuthGuard());
 
