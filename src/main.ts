@@ -5,6 +5,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './filters/http-exception.filter';
 import { TelegramAuthGuard } from './guards/telegram-auth.guard';
+import * as dotenv from 'dotenv';
+
+dotenv.config({
+  path: `.${process.env.NODE_ENV}.env`,
+});
 
 async function bootstrap(): Promise<void> {
   const PORT = process.env.PORT || 8080;
